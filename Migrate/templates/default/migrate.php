@@ -5,7 +5,7 @@ class <?php echo $this->_migrateName; ?> extends CDbMigration
 	public function up()
 	{
                 <?php if ($this->code):?>
-                    $this->execute("<?php echo str_replace(array('$','"'),array('\$','\"'),$this->code); ?>");
+                    $this->execute("<?php echo addslashes($this->code); ?>");
                 <?php endif; ?>
 
 <?php if($this->clearCache):?>
@@ -58,7 +58,7 @@ class <?php echo $this->_migrateName; ?> extends CDbMigration
 <?php if (!$this->enableDown): ?>
 		echo "<?php echo $this->_migrateName; ?> migrating down by doing nothing....\n";
 <?php else: ?>
-                $this->execute("<?php echo str_replace(array('$','"'),array('\$','\"'),$this->codeDown); ?>");
+                $this->execute("<?php echo addslashes($this->codeDown); ?>");
 <?php endif; ?>
 
 	}
