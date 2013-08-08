@@ -3,7 +3,7 @@
 /**
  * Description of MigrateGenerator
  *
- * @author Вячеслав
+ * @author Viacheslav
  */
 class MigrateGenerator extends CCodeGenerator
 {

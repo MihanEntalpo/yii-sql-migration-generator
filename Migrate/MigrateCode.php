@@ -19,7 +19,8 @@ class MigrateCode extends CCodeModel
 	{
 		return array_merge(parent::rules(), array(
 			array('migrateName', 'required'),
-			array('migrateName, _migrateName', 'match', 'pattern' => '/^\w+$/'),
+			array('migrateName', 'match', 'pattern' => '/^\w+$/'),
+			array('_migrateName','match','pattern' => '#m[0-9]{6}_[0-9]{6}_[a-zA-Z0-9\._]+#i'),
 			array('clearCache, clearAssets, enableDown', 'boolean'),
 			array('code, codeDown','safe'),
 		));
@@ -28,10 +29,10 @@ class MigrateCode extends CCodeModel
 	public function attributeLabels()
 	{
 		return array_merge(parent::attributeLabels(), array(
-			'migrateName' => 'Migrate Class Name',
-			'code'=>'SQL',
-			'clearCache' => 'Flush cache',
-			'clearAssets'=>'Clear assets',
+			'migrateName' => 'Имя класса миграции',
+			'code'		  => 'SQL',
+			'clearCache'  => 'Сбросить кэш (не работает)',
+			'clearAssets' => 'Очистить assets (не работает)',
 		));
 	}
 
